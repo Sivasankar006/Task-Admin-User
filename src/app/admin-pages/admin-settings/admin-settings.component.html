@@ -1,0 +1,58 @@
+<div class="d-flex">
+    <app-admin-header class="sticky-top"></app-admin-header>
+    <div class="d-flex flex-column w-100">
+        <div class="main-content  p-4 ">
+            <div class="container mt-5">
+                <h2 class="text-start">Admin Settings</h2>
+                <div *ngIf="!selectedEmail" class="table-responsive mt-4">
+                        <table class="table table-bordered table-striped text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Profile</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of userdetails">
+                                    <td><img [src]="user.profilePic" alt="Profile" width="50" height="50" /></td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.phone }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.role }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning me-2" (click)="usersetting(user)"><i
+                                            class="fas fa-edit"></i> </button>
+                                      </td>
+                                  </tr>
+                                  <tr *ngIf="userdetails.length === 0">
+                                    <td colspan="6" class="text-center text-muted">No user data found.</td>
+                                  </tr>
+                            </tbody>
+                        </table>
+                </div>
+              
+                <div *ngIf="selectedEmail" class="card mt-4">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <strong>{{ selectedUser?.firstName }} {{ selectedUser?.lastName }} ({{ selectedUser?.email }})</strong>
+                    <button class="btn btn-sm btn-outline-danger" (click)="clearSelection()">Close</button>
+                  </div>
+                  <div class="card-body" [formGroup]="selectedForm">
+                    <div class="row">
+                      <div class="col-md-3 mb-2" *ngFor="let field of fieldList">
+                        <label>
+                          <input type="checkbox" [formControlName]="field" />
+                          {{ field }}
+                        </label>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary mt-3" (click)="submitSelectedUser()">Save Permissions</button>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

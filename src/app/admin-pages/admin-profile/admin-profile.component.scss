@@ -1,0 +1,59 @@
+.card {
+  max-width: 800px;
+  margin: auto;
+}
+
+.bg-lightblue {
+  background-color: rgb(58 58 176);
+}
+
+.navbar-nav .nav-link:hover {
+  color: rgb(242 244 30);
+}
+
+.img-fluid {
+  @media (max-width: 767px) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.navbar-toggler {
+  color: white;
+  background-color: aliceblue;
+  margin-left: 10px;
+}
+
+.heading {
+  margin-left: 11px;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.admin-profile {
+  margin-top: 8px;
+  margin-left: 43%;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.admin-image {
+  max-width: 100px;
+}
+
+@media (min-width: 768px) {
+  .admin-profile {
+    margin-left: 70px;
+    margin-top: 0;
+  }
+}
+
+.container {
+  margin-top: 0 !important;
+}

@@ -1,0 +1,108 @@
+<div class="d-flex">
+    <app-admin-header class="sticky-top"></app-admin-header>
+    <div class="d-flex flex-column w-100 mt-3">
+      <div class="main-content adminbg  p-4 ">
+  
+        <div class="row mb-4">
+          <div class="col-sm-6 mb-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Admin Total Count</h5>
+                <p class="card-text">{{admindetails.length?admindetails.length:'0'}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">User Total Count</h5>
+                <p class="card-text">{{userdetails.length?userdetails.length:'0'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="container mt-5 mb-3">
+          <h2 class="text-dark mb-3">Admin List</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle text-center border rounded shadow-sm">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Profile</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of admindetails">
+                  <td>{{ item.date | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                  <td>
+                    <img [src]="item.profilePic" alt="Profile" class="rounded-circle profile-img" />
+                  </td>
+                  <td>{{ item.username }}</td>
+                  <td>{{ item.email }}</td>
+                  <td>
+                    <span class="badge bg-primary">{{ item.role }}</span>
+                  </td>
+                </tr>
+                <tr *ngIf="!admindetails.length">
+                  <td colspan="5" class="text-center text-muted">No admin data found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+  
+        <div class="container mt-5 mb-5">
+          <h2 class="text-white">User List</h2>
+  
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Date</th>
+                  <th>Profile</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of userdetails">
+                  <td>{{ item.date | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                  <td><img [src]="item.profilePic" alt="Profile" width="50" height="50" /></td>
+                  <td>{{ item.username }}</td>
+                  <td>{{ item.email }}</td>
+                  <td> <span class="badge bg-primary">{{ item.role }}</span></td>
+                </tr>
+                <tr *ngIf="!userdetails.length">
+                  <td colspan="5" class="text-center text-muted">No user data found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="text-center">Total Admin</h4>
+              <canvas baseChart class="my-chart" [data]="adminChartData" [type]="chartType" [options]="chartOptions">
+              </canvas>
+            </div>
+  
+            <div class="col-md-6">
+              <h4 class="text-center">Total Users</h4>
+              <canvas baseChart class="my-chart" [data]="userChartData" [type]="chartType" [options]="chartOptions">
+              </canvas>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>

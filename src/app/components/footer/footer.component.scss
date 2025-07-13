@@ -1,0 +1,23 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
+
+app-footer,
+.sticky-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.text-white,.emaillink {
+  text-decoration: none;
+}

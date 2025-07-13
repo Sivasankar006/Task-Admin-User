@@ -1,0 +1,42 @@
+.form-header {
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+
+.registration-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.form-container {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+@media (max-width: 767px) {
+  .form-header {
+    margin-left: 0;
+  }
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.fa-solid {
+  top: 44px;
+  right: 10px;
+  cursor: pointer;
+  position: absolute;
+}

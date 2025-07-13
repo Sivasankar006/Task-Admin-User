@@ -1,0 +1,138 @@
+<app-header class="sticky-top"></app-header>
+<div class="container mb-10">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mb-4">
+      <div class="form-container p-4 mt-2">
+        <div class="text-center w-100 mb-3">
+          <h2 class="fw-bold mb-3">Register</h2>
+        </div>
+
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input id="firstName" class="form-control" formControlName="firstName" autocomplete="off">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('firstName')?.touched && registrationForm.get('firstName')?.invalid">
+                  First Name is required (min 2 characters).
+                </div>
+              </div>
+
+             
+
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" class="form-control" formControlName="lastName" autocomplete="off">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('lastName')?.touched && registrationForm.get('lastName')?.invalid">
+                  Last Name is required (min 2 characters).
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Profile Picture</label>
+              
+                <ul class="nav nav-tabs mb-2" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" [class.active]="useUrl" (click)="useUrl = true" type="button">
+                      Paste URL
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" [class.active]="!useUrl" (click)="useUrl = false" type="button">
+                      Upload Image
+                    </button>
+                  </li>
+                </ul>
+              
+                <input *ngIf="useUrl" type="text" formControlName="profilePic" placeholder="Paste image URL" class="form-control" />
+                <input *ngIf="!useUrl" type="file" accept="image/*" class="form-control" (change)="onFileSelected($event)" />
+                <div class="mt-2" *ngIf="registrationForm.get('profilePic')?.value">
+                  <img [src]="registrationForm.get('profilePic')?.value" alt="Preview" class="rounded shadow-sm" width="80" height="80" />
+                </div>
+                <div class="text-danger" *ngIf="registrationForm.get('profilePic')?.touched && registrationForm.get('profilePic')?.invalid">
+                  Profile picture is required.
+                </div>
+              </div>
+              
+
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input id="phone" class="form-control" formControlName="phone" autocomplete="off">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
+                  Enter a valid 10-digit phone number.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" class="form-control" formControlName="username" autocomplete="off">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('username')?.touched && registrationForm.get('username')?.invalid">
+                  Username is required (min 4 characters).
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" formControlName="email" autocomplete="off">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+                  Enter a valid email.
+                </div>
+              </div>
+
+              <div class="form-group position-relative">
+                <label for="password">Password</label>
+                <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password"
+                autocomplete="new-password">
+                <i class="fa-solid"
+                   [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                   (click)="showPassword = !showPassword"
+                 >
+                </i>
+                <div class="text-danger" *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
+                  Password must be at least 6 characters.
+                </div>
+              </div>
+
+              <div class="form-group position-relative">
+                <label for="confirmPassword">Confirm Password</label>
+                <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword" class="form-control" autocomplete="new-password"
+                formControlName="confirmPassword">
+                <i class="fa-solid"
+                   [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
+                   (click)="showConfirmPassword = !showConfirmPassword"
+                  >
+                </i>
+                <div class="text-danger" *ngIf="registrationForm.errors?.['mismatch'] && registrationForm.get('confirmPassword')?.touched">
+                  Passwords do not match.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control" formControlName="role">
+                  <option value="User">User</option>
+                  <option value="Admin">Admin</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-3 w-100">Register</button>
+        </form>
+
+        <div class="d-flex justify-content-between  mt-3">
+          <a class="no-underline" routerLink="/login">Don't have an account? Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

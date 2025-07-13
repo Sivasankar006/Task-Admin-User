@@ -1,0 +1,51 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  .display-4{
+    font-weight: 500;
+    margin-top: -20px;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  app-root {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .container {
+    flex: 1 0 auto;
+  }
+  
+  app-footer {
+    margin-top: auto;
+  }
+  
+  

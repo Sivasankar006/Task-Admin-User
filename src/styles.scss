@@ -1,0 +1,110 @@
+@import 'ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.sticky-top {
+  z-index: 1020;
+  background-color: #7b7bff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2.text-white {
+  color: black !important;
+}
+
+body {
+  background-image: none; /* Adjust path if needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #7b7bff; /* fallback color if image fails */
+}
+
+.loading {
+  font-size: 20px;
+  color: white
+}
+
+table {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+thead th {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px;
+}
+
+tbody td {
+  font-size: 0.95rem;
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.profile-img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.fa-solid {
+  top: 43px !important;
+  right: 10px;
+  cursor: pointer;
+  position: absolute;
+}
+
+// admin common style
+
+.container {
+  margin-top: 0 !important;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: medium;
+}
+
+.imges {
+  width: 60px;
+  height: auto;
+}
+
+.container {
+  margin-top: 0 !important;
+}
+
+.my-chart {
+  height: 300px !important;
+  width: 300px !important;
+}
+  
+app-admin-header.sticky-top {
+  height: fit-content;
+}
+
+canvas.my-chart {
+  margin: auto;
+}
+
+.main-content {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 1rem;
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 240px;
+  }
+}
+
+
+footer.bg-dark.text-center.text-white.sticky-footer {
+  background-color: rgb(5 24 160) !important;
+}

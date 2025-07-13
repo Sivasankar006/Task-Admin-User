@@ -1,0 +1,39 @@
+.card {
+    max-width: 800px;
+    margin: auto;
+  }
+  .bg-lightblue {
+    background-color: rgb(58 58 176);
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: rgb(242 244 30);
+  }
+  
+  .img-fluid {
+    @media (max-width: 767px) {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff;
+    margin-left: 10px;
+  }
+  
+  .navbar-toggler {
+    color: white;
+    background-color: aliceblue;
+    margin-left: 10px;
+  }
+  .heading{
+    margin-left: 11px;
+    font-weight: 600;
+    font-size: medium;
+  }
+  .img-fluid {
+    width: 95%;
+    height: 98%;
+}
