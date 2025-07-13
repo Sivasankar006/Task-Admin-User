@@ -40,3 +40,8 @@
   cursor: pointer;
   position: absolute;
 }
+
+.input-group-append .btn {
+  border-left: 0;
+  padding: 0.375rem 0.75rem;
+}

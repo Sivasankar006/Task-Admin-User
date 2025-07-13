@@ -12,12 +12,12 @@ h2.text-white {
 }
 
 body {
-  background-image: none; /* Adjust path if needed */
+  background-image: none; 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background-color: #7b7bff; /* fallback color if image fails */
+  background-color: #7b7bff; 
 }
 
 .loading {

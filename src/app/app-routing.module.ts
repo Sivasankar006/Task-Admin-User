@@ -5,7 +5,7 @@ import { AuthGuard } from './auth/auth-gard.service';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./user-pages/user-dashboard/user-dashboard.module').then(m => m.UserDashboardModule),
+    loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule),
   },
   {
     path: 'register',

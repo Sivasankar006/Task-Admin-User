@@ -44,11 +44,11 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // Ensures page takes full viewport height
+  min-height: 100vh; 
 }
 
 .flex-fill {
-  flex: 1 1 auto; // Ensures main content fills the space between header & footer
+  flex: 1 1 auto; 
 }
 
 app-footer, .sticky-footer {

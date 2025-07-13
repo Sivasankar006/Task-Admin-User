@@ -18,7 +18,7 @@
                 </div>
               </div>
 
-             
+
 
               <div class="form-group">
                 <label for="lastName">Last Name</label>
@@ -30,31 +30,13 @@
               </div>
 
               <div class="form-group">
-                <label>Profile Picture</label>
-              
-                <ul class="nav nav-tabs mb-2" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" [class.active]="useUrl" (click)="useUrl = true" type="button">
-                      Paste URL
-                    </button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" [class.active]="!useUrl" (click)="useUrl = false" type="button">
-                      Upload Image
-                    </button>
-                  </li>
-                </ul>
-              
-                <input *ngIf="useUrl" type="text" formControlName="profilePic" placeholder="Paste image URL" class="form-control" />
-                <input *ngIf="!useUrl" type="file" accept="image/*" class="form-control" (change)="onFileSelected($event)" />
-                <div class="mt-2" *ngIf="registrationForm.get('profilePic')?.value">
-                  <img [src]="registrationForm.get('profilePic')?.value" alt="Preview" class="rounded shadow-sm" width="80" height="80" />
-                </div>
-                <div class="text-danger" *ngIf="registrationForm.get('profilePic')?.touched && registrationForm.get('profilePic')?.invalid">
-                  Profile picture is required.
+                <label for="username">Username</label>
+                <input id="username" class="form-control" formControlName="username" autocomplete="off">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('username')?.touched && registrationForm.get('username')?.invalid">
+                  Username is required (min 4 characters).
                 </div>
               </div>
-              
 
               <div class="form-group">
                 <label for="phone">Phone</label>
@@ -64,17 +46,22 @@
                   Enter a valid 10-digit phone number.
                 </div>
               </div>
+  
+              <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control" formControlName="role">
+                  <option value="User">User</option>
+                  <option value="Admin">Admin</option>
+                </select>
+              </div>
+
+
+             
+
             </div>
 
             <div class="col-md-6">
-              <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" class="form-control" formControlName="username" autocomplete="off">
-                <div class="text-danger"
-                  *ngIf="registrationForm.get('username')?.touched && registrationForm.get('username')?.invalid">
-                  Username is required (min 4 characters).
-                </div>
-              </div>
+             
 
               <div class="form-group">
                 <label for="email">Email</label>
@@ -87,51 +74,84 @@
 
               <div class="form-group position-relative">
                 <label for="password">Password</label>
-                <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password"
-                autocomplete="new-password">
-                <i class="fa-solid"
-                   [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
-                   (click)="showPassword = !showPassword"
-                 >
+                <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control"
+                  formControlName="password" autocomplete="new-password">
+                <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                  (click)="showPassword = !showPassword">
                 </i>
-                <div class="text-danger" *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
+                <div class="text-danger"
+                  *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
                   Password must be at least 6 characters.
                 </div>
               </div>
 
               <div class="form-group position-relative">
                 <label for="confirmPassword">Confirm Password</label>
-                <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword" class="form-control" autocomplete="new-password"
-                formControlName="confirmPassword">
-                <i class="fa-solid"
-                   [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
-                   (click)="showConfirmPassword = !showConfirmPassword"
-                  >
+                <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword" class="form-control"
+                  autocomplete="new-password" formControlName="confirmPassword">
+                <i class="fa-solid" [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
+                  (click)="showConfirmPassword = !showConfirmPassword">
                 </i>
-                <div class="text-danger" *ngIf="registrationForm.errors?.['mismatch'] && registrationForm.get('confirmPassword')?.touched">
+                <div class="text-danger"
+                  *ngIf="registrationForm.errors?.['mismatch'] && registrationForm.get('confirmPassword')?.touched">
                   Passwords do not match.
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="role">Role:</label>
-                <select class="form-control" formControlName="role">
-                  <option value="User">User</option>
-                  <option value="Admin">Admin</option>
-                </select>
+              <div class="form-group position-relative">
+                <label class="fw-semibold">Profile Picture</label>
+
+                <div class="input-group">
+                  <input *ngIf="useUrl" type="text" class="form-control" placeholder="Paste image URL"
+                    formControlName="profilePic" />
+
+                  <input *ngIf="!useUrl" type="file" accept="image/*" class="form-control"
+                    (change)="onFileSelected($event)" />
+
+                  <div class="input-group-append d-flex">
+                    <button type="button" class="btn btn-outline-secondary" (click)="useUrl = true"
+                      [ngClass]="{'active': useUrl}" title="Paste URL">
+                      <i class="fas fa-link"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary" (click)="useUrl = false"
+                      [ngClass]="{'active': !useUrl}" title="Upload Image">
+                      <i class="fas fa-upload"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Image preview -->
+                <div class="mt-2" *ngIf="registrationForm.get('profilePic')?.value">
+                  <img [src]="registrationForm.get('profilePic')?.value" alt="Preview" class="rounded shadow-sm border"
+                    width="80" height="80" />
+                </div>
+
+                <!-- Error -->
+                <div class="text-danger mt-1" *ngIf="
+                    registrationForm.get('profilePic')?.touched &&
+                    registrationForm.get('profilePic')?.invalid
+                  ">
+                  Profile picture is required.
+                </div>
               </div>
-            </div>
+
+
+
+          
+
+
           </div>
+      </div>
 
-          <button type="submit" class="btn btn-primary btn-block mt-3 w-100">Register</button>
-        </form>
+      <button type="submit" class="btn btn-primary btn-block mt-3 w-100">Register</button>
+      </form>
 
-        <div class="d-flex justify-content-between  mt-3">
-          <a class="no-underline" routerLink="/login">Don't have an account? Login</a>
-        </div>
+      <div class="d-flex justify-content-between  mt-3">
+        <a class="no-underline" routerLink="/login">Already Account? Login</a>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <app-footer></app-footer>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -19,15 +20,28 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
-    private toastr: ToastrService,
+    private toastr: ToastrService, private location: Location,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.createForm();
+    this.autoredirect();
   }
 
+  autoredirect() {
+    const role = localStorage.getItem('type');
+    const token = localStorage.getItem('token');
+    const currentPath = this.location.path();
+    if ((currentPath == '' || currentPath == '/register') && role === 'Admin') {
+      this.router.navigate(['/admin/dashboard']);
+    } else if ((currentPath == '' || currentPath == '/register') && role === 'User') {
+      this.router.navigate(['/user/dashboard']);
+    } else if (!token) {
+      this.router.navigate(['/register']);
+    }
+  }
   createForm() {
     this.registrationForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -85,7 +99,7 @@ export class RegisterComponent implements OnInit {
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     this.fileError = '';
-  
+
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -100,5 +114,5 @@ export class RegisterComponent implements OnInit {
       this.fileError = 'Only image files are allowed.';
     }
   }
-  
+
 }

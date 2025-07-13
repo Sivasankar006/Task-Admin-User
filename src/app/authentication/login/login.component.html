@@ -10,29 +10,33 @@
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
             <div class="form-group">
               <label for="email">Email:</label>
-              <input id="email" class="form-control" formControlName="email" type="email" autocomplete="off">
+              <input id="email" class="form-control" formControlName="email" type="email" autocomplete="off" />
               <div
-                *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('email').dirty)"
+                *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)"
                 class="text-danger">
-                <div *ngIf="loginForm.get('email').errors?.required">Email is required.</div>
-                <div *ngIf="loginForm.get('email').errors?.email">Enter a valid email.</div>
+                <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+                <div *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email.</div>
               </div>
             </div>
 
             <div class="form-group position-relative">
               <label for="password">Password:</label>
               <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control"
-                formControlName="password">
+                formControlName="password" />
               <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
-                (click)="showPassword = !showPassword">
-              </i>
+                (click)="showPassword = !showPassword"></i>
               <div
                 *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)"
                 class="text-danger mt-1">
                 <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
-                <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password should be at least 6 characters
-                  long.</div>
+                <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password should be at least 6 characters long.</div>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label>{{ captchaQuestion }}</label>
+              <input type="text" class="form-control" formControlName="captchaAnswer" autocomplete="off" />
+              <div class="text-danger" *ngIf="captchaError">{{ captchaError }}</div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -44,6 +48,5 @@
       </div>
     </div>
   </div>
-
   <app-footer></app-footer>
 </div>
