@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
+      this.toastr.error('Please file the form fields');
       this.spinner.hide();
       return;
     }

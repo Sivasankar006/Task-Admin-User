@@ -2,7 +2,7 @@
 <div class="container mb-10">
   <div class="row justify-content-center">
     <div class="col-md-8 mb-4">
-      <div class="form-container p-4 mt-3 mb-4">
+      <div class="form-container p-4 mt-2">
         <div class="text-center w-100 mb-3">
           <h2 class="fw-bold mb-3">Register</h2>
         </div>
@@ -46,7 +46,7 @@
                   Enter a valid 10-digit phone number.
                 </div>
               </div>
-  
+
               <div class="form-group">
                 <label for="role">Role:</label>
                 <select class="form-control" formControlName="role">
@@ -54,15 +54,9 @@
                   <option value="Admin">Admin</option>
                 </select>
               </div>
-
-
-             
-
             </div>
 
             <div class="col-md-6">
-             
-
               <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" class="form-control" formControlName="email" autocomplete="off">
@@ -99,8 +93,7 @@
               </div>
 
               <div class="form-group position-relative">
-                <label class="fw-semibold">Profile Picture</label>
-
+                <label class="Profile">Profile Picture</label>
                 <div class="input-group">
                   <input *ngIf="useUrl" type="text" class="form-control" placeholder="Paste image URL"
                     formControlName="profilePic" />
@@ -119,14 +112,10 @@
                     </button>
                   </div>
                 </div>
-
-                <!-- Image preview -->
                 <div class="mt-2" *ngIf="registrationForm.get('profilePic')?.value">
                   <img [src]="registrationForm.get('profilePic')?.value" alt="Preview" class="rounded shadow-sm border"
                     width="80" height="80" />
                 </div>
-
-                <!-- Error -->
                 <div class="text-danger mt-1" *ngIf="
                     registrationForm.get('profilePic')?.touched &&
                     registrationForm.get('profilePic')?.invalid
@@ -134,24 +123,17 @@
                   Profile picture is required.
                 </div>
               </div>
-
-
-
-          
-
-
+            </div>
           </div>
-      </div>
 
-      <button type="submit" class="btn btn-primary btn-block mt-3 w-100">Register</button>
-      </form>
-
-      <div class="d-flex justify-content-between  mt-3">
-        <a class="no-underline" routerLink="/login">Already Account? Login</a>
+          <button type="submit" class="btn btn-primary btn-block mt-3 w-100">Register</button>
+        </form>
+        <div class="d-flex justify-content-between  mt-3">
+          <a class="no-underline" routerLink="/login">Already Account? Login</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <app-footer></app-footer>

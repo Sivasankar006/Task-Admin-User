@@ -17,6 +17,7 @@ export class UserProfileComponent {
   constructor(private fb: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.loadUserDetails();
   }
 

@@ -1,4 +1,3 @@
-// Updated AdminAddbookComponent renamed to AdminUserManagementComponent
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -42,6 +41,7 @@ export class AdminUsermanageComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.getUsers();
   }
 

@@ -18,6 +18,11 @@ app-footer,
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.text-white,.emaillink {
+footer.bg-dark.text-center.text-white.sticky-footer {
+  background-color: rgb(5 24 160) !important;
+}
+
+.text-white,
+.emaillink {
   text-decoration: none;
 }

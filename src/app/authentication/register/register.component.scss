@@ -16,13 +16,29 @@
   width: 100%;
 }
 
+
 .form-container {
   background-color: #f8f9fa;
   border: 1px solid #ced4da;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  margin-bottom: 30px;
 }
+
+@media (max-width: 576px) {
+  .form-container {
+    margin-top: 20px !important;
+    margin-bottom: 0 !important; 
+  }
+
+  .mb-4 {
+    margin-bottom: 0 !important; 
+  }
+}
+
+
+
 
 @media (max-width: 767px) {
   .form-header {
